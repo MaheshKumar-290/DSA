@@ -14,58 +14,25 @@ public:
 
 int ans =-9999999;
 
-TreeNode* MaxPathsum(TreeNode* root){
+int MaxPathsum(TreeNode* root){
     if(root==nullptr ){
-
-
-
-    return new TreeNode(0);
+    return 0;
 }
 
+int left =MaxPathsum(root->left);
 
-TreeNode* left =MaxPathsum(root->left);
-
-TreeNode*  right =MaxPathsum(root->right);
-
-
-if(root->right!=nullptr && root->left!=nullptr){
+int  right =MaxPathsum(root->right);
 
 
-ans =max({ans,left->val+right->val+root->val    ,root->val   ,left->val,   right->val, right->val+root->val,left->val+root->val});
+ans=max({ans,left+right+root->val,root->val,right+root->val,left+root->val});
 
-return new TreeNode(max({left->val+root->val,right->val+root->val,root->val}));}
-
-
-
-if(root->left!=NULL && root->right==nullptr){
-
-ans =max({ans,left->val+root->val,root->val,left->val});
-
-return new TreeNode(max({left->val+root->val,root->val}));
-}
-
-
-
-if(root->left==NULL && root->right!=nullptr){
-
-ans =max({ans,right->val+root->val,root->val,right->val});
-
-return new TreeNode(max({right->val+root->val,root->val}));
-}
-
-
-    
-ans =max({ans,root->val});
-
-return new TreeNode(root->val);
-
-
+return max({root->val,(max(left,right)+root->val)});
 
 
 }
 
     int maxPathSum(TreeNode* root) {
-      TreeNode*  temp=MaxPathsum(root);
+        int a=MaxPathsum(root);
 return ans;
         
     }
