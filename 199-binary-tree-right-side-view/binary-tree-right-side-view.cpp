@@ -12,28 +12,30 @@
 class Solution {
 public:
 
-void rnl(TreeNode* root,map<int,int>&mp,int height,vector<int>& ans){
+void rnl(TreeNode* root,int height,vector<int>& ans){
     if(root==nullptr){
         return;
     }
 
-    if(mp.find(height)==mp.end()){
-        mp[height]=root->val;
+    if(height==ans.size()){
+      
         ans.push_back(root->val);
     }
 
-rnl(root->right,mp,height+1,ans);
+rnl(root->right,height+1,ans);
 
-rnl(root->left,mp,height+1,ans);
+rnl(root->left,height+1,ans);
 
 }
+
+
     vector<int> rightSideView(TreeNode* root) {
 vector<int>ans ;
         
 
-map<int,int> mp;
 
-rnl(root,mp,0,ans);
+
+rnl(root,0,ans);
 
         return ans;
     }
