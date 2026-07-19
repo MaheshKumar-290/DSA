@@ -25,7 +25,8 @@ if(root==nullptr){
        if(index==k){
             return root->val;
         }
- int left=iot(root->right,k,index);
+ int left=0;
+ if(index<k)left = iot(root->right,k,index);
 
 if(right>left){
     return right;
