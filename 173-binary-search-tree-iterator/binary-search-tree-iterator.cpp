@@ -12,46 +12,48 @@
 class BSTIterator {
 public:
 
-void lnr(TreeNode* root,vector<int>& store){
+stack<TreeNode*> st;
 
-if(root==nullptr){
-    return;
+
+
+    BSTIterator(TreeNode* root) {
+        
+while(root!=nullptr){
+    st.push(root);
+    root=root->left;
 }
 
-
-lnr(root->left,store);
-store.push_back(root->val);
-lnr(root->right,store);
-
-
-}
-
-vector<int> store;
-
-
-int pointer=-1;
-       
-
-
-    BSTIterator(TreeNode* root) { 
-
-
-        lnr(root,store);
+        
     }
-    
-    int next() {
-        pointer++;
-return store[pointer];
 
+
+    
+    int next(){
+        TreeNode* temp=st.top();
+TreeNode* p=st.top()->right;
+st.pop();
+       while(p){
+
+    st.push(p);
+    p=p->left;
+}
+
+
+return temp->val;
     }
     
 
 
     bool hasNext() {
 
-        return pointer+1<store.size();
-        
+if(st.empty()){
+    return false;
+}
+
+        return true;
     }
+
+
 };
 
 /**
