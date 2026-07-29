@@ -11,78 +11,119 @@
  */
 class Solution {
 public:
-bool find(TreeNode* root,int t){
-bool left=false;
-bool right=false;
+
+int nextt(stack<TreeNode*>& st){
 
 
-if(root==nullptr){
-    return false;
-}
+TreeNode* ans =st.top();
+int temp=ans->val;st.pop();
 
-if(root->val==t){
-    return true;
-}
 
-else if(root->val>t){
-   left= find(root->left,t);
-}
 
-if(left){
-    return true;
-}
+ans=ans->right;
 
-else if(root->val<t){
-  right = find(root->right,t);
+while(ans){
+    st.push(ans);
+    ans=ans->left;
 }
 
 
-return right;
+
+
+
+
+
+return temp;
 
 }
 
 
-    bool FindTarget(TreeNode* root, int k,TreeNode* parent) {
 
 
-        if(root==nullptr){
-            return false;
-        }
 
 
-if(k==2*root->val){
-    
+int backward(stack<TreeNode*>& st2){
+
+
+
+
+TreeNode* ans =st2.top();
+int temp=ans->val;st2.pop();
+
+
+
+ans=ans->left;
+
+while(ans){
+    st2.push(ans);
+    ans=ans->right;
 }
-  else  if(find(parent,k-root->val)){
-            return true ;
-        }
 
 
-        bool left=FindTarget(root->left,k,parent);
 
-if(left){
-    return true;
+
+
+
+
+
+
+return temp;
+
+
+
 }
-         bool right=FindTarget(root->right,k,parent);
-        if(left || right){
-            return true;
-        }
-        
 
-        return false;
-    }
+
+
+
+
 
 
 
     bool findTarget(TreeNode* root, int k) {
 
 
-        if(root==nullptr){
-            return false;
-        }
-
-return FindTarget(root,k,root);
-
-      
+stack<TreeNode*>st1;
+TreeNode* temp1=root;
+while(temp1){
+    st1.push(temp1);
+    temp1=temp1->left;
 }
+
+
+
+stack<TreeNode*>st2;
+
+while(root){
+    st2.push(root);
+    root=root->right;
+}
+
+int next=nextt(st1);
+int back=backward(st2);
+
+while(next!=back){
+
+    if(next+back==k ){
+        return true;
+    }
+
+
+if(next+back>k){
+    back=backward(st2);
+}
+
+
+else{
+    next=nextt(st1);
+}
+
+}
+
+
+
+
+return false;
+        
+    }
 };
