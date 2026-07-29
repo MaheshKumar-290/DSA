@@ -102,7 +102,7 @@ while(root){
 int next=nextt(st1);
 int back=backward(st2);
 
-while(next!=back){
+while(next<back){
 
     if(next+back==k ){
         return true;
