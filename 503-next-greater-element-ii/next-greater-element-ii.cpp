@@ -4,7 +4,7 @@ public:
 
 stack<int>st;
 int n=nums.size();
-vector<int> ans;
+vector<int> ans(n);
 
 //unorder_map<int,int> mp;
 
@@ -15,10 +15,10 @@ vector<int> ans;
 
             if(i<n){
                 if(st.empty()){
-                  ans.push_back(-1);
+                  ans[i]=-1;
                 }
 
-              else  ans.push_back(st.top());
+              else  ans[i]=st.top();
 
 
             }
@@ -29,7 +29,7 @@ vector<int> ans;
 
         }
         
- reverse(ans.begin(),ans.end());
+ //reverse(ans.begin(),ans.end());
 return ans;
 
 
