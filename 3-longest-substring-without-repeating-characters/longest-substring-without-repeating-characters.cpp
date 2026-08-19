@@ -6,13 +6,13 @@ public:
 
        
        int j=0;
-int n=s.size();
+
 int ans=0;
 
 int mp[256];
 fill(begin(mp),end(mp),-1);
 
-    for(int i=0;i<n;i++){
+    for(int i=0;i<s.size();i++){
 
         if(mp[s[i]]==-1){
            
@@ -30,10 +30,7 @@ mp[s[j]]=-1;
     j++;
 }
 
-
-
-   
-            mp[s[i]]=i;
+    mp[s[i]]=i;
 
 
         }
