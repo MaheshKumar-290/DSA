@@ -8,9 +8,9 @@ public:
        int j=0;
 
 int ans=0;
-
-int mp[256];
-fill(begin(mp),end(mp),-1);
+vector<int> mp(256,-1);
+// int mp[256];
+// fill(begin(mp),end(mp),-1);
 
     for(int i=0;i<s.size();i++){
 
