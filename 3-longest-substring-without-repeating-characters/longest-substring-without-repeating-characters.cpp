@@ -8,7 +8,7 @@ public:
        int j=0;
 
 int ans=0;
-vector<int> mp(256,-1);
+vector<int> mp(128,-1);
 // int mp[256];
 // fill(begin(mp),end(mp),-1);
 
