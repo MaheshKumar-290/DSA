@@ -9,27 +9,23 @@ public:
 int n=s.size();
 int ans=0;
 
-map<char,int>mp;
-
+int mp[256];
+fill(begin(mp),end(mp),-1);
 
     for(i=0;i<n;i++){
 
-        if(mp.find(s[i])==mp.end()){
+        if(mp[s[i]]==-1){
            
             mp[s[i]]=i;
 
             ans=max(ans,i-j+1);
 
-
-
         }
-
-
         else{
 
 while(j<mp[s[i]]+1){
 
-mp.erase(s[j]);
+mp[s[j]]=-1;
 
     j++;
 }
