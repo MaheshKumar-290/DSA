@@ -14,26 +14,23 @@ vector<int> mp(128,-1);
 
     for(int i=0;i<s.size();i++){
 
-        if(mp[s[i]]==-1){
-           
+        if(mp[s[i]]==-1 || mp[s[i]]<j ){
+           //not exist 
             mp[s[i]]=i;
-
-            ans=max(ans,i-j+1);
+  
 
         }
+
+
         else{
 
-while(j<mp[s[i]]+1){
-
-mp[s[j]]=-1;
-
-    j++;
-}
+j=max(j,mp[s[i]]+1);
 
     mp[s[i]]=i;
 
 
         }
+         ans=max(ans,i-j+1);
 
     }
 
