@@ -10,28 +10,27 @@ int count=0;
 
         for(int i=0;i<n;i++){
 
-if(nums[i]==0 ){
-
-if(k>0){
+if(nums[i]==0){
     k--;
 }
-else{
 
-    while(nums[j]!=0 && j<i){
-        j++;
-        count--;
+
+if(k<0){
+    if(nums[j]==0){
+        k++;
     }
-    count--;
     j++;
-   
-}
-
-
 
 }
-count++;
 
-ans=max(count,ans);
+
+
+
+
+if(k>=0){
+ans=max(i-j+1,ans);
+}
+
 
         }
 
