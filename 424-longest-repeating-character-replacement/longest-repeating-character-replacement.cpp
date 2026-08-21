@@ -2,7 +2,7 @@ class Solution {
 public:
     int characterReplacement(string s, int k) {
 
-      vector<int>freq(28,0);
+      vector<int>freq(26,0);
 int n=s.size();
 int maxfreq=0;
 
@@ -18,11 +18,11 @@ int ans=0;
 
         freq[s[j]-'A']--;
 
-        //update the new freq
-for(int x=0;x<28;x++){
-    maxfreq=max(maxfreq,freq[x]);
+//         //update the new freq
+// for(int x=0;x<26;x++){
+//     maxfreq=max(maxfreq,freq[x]);
     
-}
+// }
 
         j++;
 
