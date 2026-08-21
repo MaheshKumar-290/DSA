@@ -14,7 +14,7 @@ int ans=0;
         freq[s[i]-'A']++;
         maxfreq=max(maxfreq,freq[s[i]-'A']);
   //check
-     while(i-j-maxfreq+1>k){
+     if(i-j-maxfreq+1>k){
 
         freq[s[j]-'A']--;
 
@@ -23,6 +23,7 @@ for(int x=0;x<28;x++){
     maxfreq=max(maxfreq,freq[x]);
     
 }
+
         j++;
 
         }
