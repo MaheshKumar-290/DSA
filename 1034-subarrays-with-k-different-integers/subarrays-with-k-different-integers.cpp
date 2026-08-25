@@ -6,12 +6,13 @@ int help(vector<int>& nums,int k){
     if(k==0){
         return 0;
     }
+
  int j=0;
-        int n=nums.size();
+       // int n=n;
 unordered_map<int,int>mp;
 int ans=0;
 
-        for(int i=0;i<n;i++){
+        for(int i=0;i<nums.size();i++){
 
             mp[nums[i]]++;
 
@@ -26,17 +27,8 @@ int ans=0;
 
                 j++;
             }
-
-
-            if(mp.size()<=k){
                 ans+=i-j+1;
-            }
-
-
-
-
-
-
+            
         }
         
 return ans;
