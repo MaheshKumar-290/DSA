@@ -29,9 +29,11 @@ int col[]={1,0,-1,0};
 
 
                 if(r>-1 && r<n && c<m && c>-1 ){
-                 if(visited[r][c]==-1)  { qu.push({r,c});}
 
-                        if(mat[r][c]>mat[node.first][node.second]+1    || (visited[r][c]==-1 && mat[r][c]==1)  ){
+                    
+                 if(visited[r][c]==-1  && mat[r][c]==0 )  { qu.push({r,c});}
+
+                      else if(mat[r][c]>mat[node.first][node.second]+1    || (visited[r][c]==-1 && mat[r][c]==1)  ){
                             mat[r][c]=mat[node.first][node.second]+1;
                             qu.push({r,c});
 
