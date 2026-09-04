@@ -54,7 +54,7 @@ for(int i=0 ;i <n ;i++){
 
 while(!qu.empty()){
 
-auto temp=qu.front();
+pair <string,int> temp=qu.front();
 qu.pop();
 
 if(temp.first==endWord){
@@ -66,7 +66,7 @@ if(temp.first==endWord){
 
 for(int i=0 ;i <n ;i++){
 
-    if(check(temp.first , wordList[i]) && visited[i]==-1){
+    if( visited[i]==-1  && check(temp.first , wordList[i])){
         qu.push({ wordList[i],temp.second+1});
         visited[i]=1;
 
