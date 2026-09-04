@@ -2,7 +2,7 @@ class Solution {
 public:
 
 
-bool check(string a, string b){
+bool check(string& a, string& b){
 
 
 int size=a.size();
