@@ -1,51 +1,67 @@
 class Solution {
-private:
-    bool dfs(const vector<vector<int>>& graph, vector<int>& color,
-             int curr, int currColor) {
-
-        // Traverse all adjacent vertices
-        for (int neighbor : graph[curr]) {
-
-            // If neighbor is uncolored, assign opposite color
-            if (color[neighbor] == -1) {
-
-                color[neighbor] = 1 - currColor;
-
-                // If conflict is found deeper in DFS
-                if (!dfs(graph, color, neighbor, 1 - currColor))
-                    return false;
-            }
-
-            // Adjacent vertices have same color -> Not Bipartite
-            else if (color[neighbor] == currColor) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
 public:
     bool isBipartite(vector<vector<int>>& graph) {
 
-        int n = graph.size();
 
-        // -1 denotes uncolored vertex
-        vector<int> color(n, -1);
+int n=graph.size();
 
-        // Handle disconnected components
-        for (int i = 0; i < n; i++) {
 
-            if (color[i] == -1) {
+vector<int> col(n,-1);
 
-                // Start DFS with color 0
-                color[i] = 0;
+for(int j=0;j<n;j++){
 
-                if (!dfs(graph, color, i, 0))
-                    return false;
-            }
-        }
+queue<int>qu;
+if(col[j]==-1){
+col[j]=1;
+qu.push(j);
+}
 
-        return true;
+
+while(!qu.empty()){
+
+int temp=qu.front();
+qu.pop();
+
+
+for(int i=0;i<graph[temp].size();i++){
+
+if(col[graph[temp][i]]==col[temp]){
+    return false ;
+}
+
+
+
+if(col[graph[temp][i]]==-1){
+    //not visited 
+
+if(col[temp]==1){
+    col[graph[temp][i]]=0;
+
+}
+
+else{
+        col[graph[temp][i]]=1;
+
+}
+
+qu.push(graph[temp][i]);
+
+}
+
+
+
+
+}
+
+
+}
+
+}
+
+
+return true;
+
+
+        
     }
 };
