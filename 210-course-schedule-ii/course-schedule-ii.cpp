@@ -10,7 +10,7 @@ vector<int>ans;
 
 vector<vector<int>> adj(numCourses);
 vector<int>indegree(numCourses,0);
-int count=numCourses;
+
 
 for(auto it: prerequisites ){
 
@@ -37,7 +37,7 @@ while(!qu.empty()){
 int front=qu.front();
 ans.push_back(front);
 qu.pop();
-count--;
+
 
 for(auto it: adj[front]){
 
@@ -68,7 +68,7 @@ if(indegree[it]==0){
 
 
 
-if(count!=0){
+if(ans.size()!=numCourses){
    ans.clear()  ;
 }
 
