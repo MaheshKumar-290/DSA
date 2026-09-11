@@ -1,45 +1,6 @@
+
 class Solution {
 public:
-
-
-bool dfs(int node ,vector<vector<int>>& adj,vector<int>& path, vector<int>& visited   ){
-
-path[node] =1;
- visited[node] =1;
-
-
-
-for(auto it : adj[node] ){
-
-    if(visited[it]==0){
-        
-    if( dfs(it,adj,path,visited ) ){    return true;}        
- 
-    }
-
-    else if( path[it]== 1. ){
-        return true ;
-    }
-
-
-}
-
-
-
-
-path[node]=0;
-
-return false;
-
-
-}
-
-
-
-
-
-
-
 
 
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
@@ -48,21 +9,44 @@ vector<int>visited(numCourses,0);
 vector<int>path(numCourses,0);
 
 vector<vector<int>> adj(numCourses);
-
+vector<int>indegree(numCourses,0);
+int count=numCourses;
 
 for(auto it: prerequisites ){
-adj[it[0]].push_back(it[1]);
+
+adj[it[1]].push_back(it[0]);
+indegree[it[0]]++;
+
 }
 
+
+queue<int>qu;
 
 
 for(int i=0;i<numCourses;i++){
-
-if(visited[i]!=1){
-   if( dfs(i,adj,path,visited)) return false;
+    if(indegree[i]==0){
+        qu.push(i);
+        
+        }
 }
 
 
+
+
+while(!qu.empty()){
+int front=qu.front();
+qu.pop();
+count--;
+
+for(auto it: adj[front]){
+
+indegree[it]--;
+if(indegree[it]==0){
+    qu.push(it);
+
+}
+
+    
 }
 
 
@@ -70,7 +54,28 @@ if(visited[i]!=1){
 
 
 
-return true;
+
+
+
+
+}
+
+
+
+
+
+
+
+
+if(count==0){
+    return true ;
+}
+
+
+
+return false;
 
     }
+
+
 };
