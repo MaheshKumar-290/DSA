@@ -38,9 +38,9 @@ const int MOD = 1000000007;
         int node=pq.top().second;
         pq.pop();
 
-
+        
 // Right after pq.pop();
-
+if (time > dist[node]) continue; 
 
         for(auto it : adj[node]){
 
