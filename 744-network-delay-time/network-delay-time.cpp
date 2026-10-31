@@ -31,9 +31,9 @@ public:
             for(auto it : adj[node]){
 
             
-                if( dist[it.first] > time+ it.second   ){
+                if( dist[it.first] > dist[node]+ it.second   ){
 
-                dist[it.first] = time + it.second ;
+                dist[it.first] = dist[node] + it.second ;
 
 
                    
